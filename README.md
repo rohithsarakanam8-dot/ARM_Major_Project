@@ -38,7 +38,7 @@ https://drive.google.com/drive/folders/1QpSErZH3KshvxiU8Xgjd9GdowBaQYrSA?usp=dri
 ## Hardware Requirements
 - LPC2124 ARM7 Microcontroller
 - Resistive Touch Screen
-- 16x2 LCD Display
+- 20x4 LCD Display
 - 4x4 Matrix Keypad
 - SPI EEPROM
 - LEDs
