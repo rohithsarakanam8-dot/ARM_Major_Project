@@ -18,7 +18,7 @@
  * - Continuously monitors user interactions.
  */
 #include <LPC21XX.H>
-#include<string.h>
+#include <string.h>
 #include "devices.h"
 #include "pinconnectblock.h"
 #include "define.h"
@@ -29,6 +29,7 @@
 #include "types.h"
 #include "password.h"
 #include "interrupts.h"
+#include <stdlib.h>
 
 /* Touch screen enable flag
  * 0 -> Touch disabled
@@ -99,13 +100,13 @@ int main()
 
             if(str[0])
             {
-                StrLCD("TOUCH CONNECTED");
+                StrLCD((u8*)"TOUCH CONNECTED");
                 delay_s(1);
             }
         }
         else
         {
-            StrLCD("TOUCH NOT CONNECTED");
+            StrLCD((u8*)"TOUCH NOT CONNECTED");
             delay_s(1);
         }
 
@@ -125,23 +126,23 @@ int main()
             {
                 CmdLCD(0x01);
                 CmdLCD(0x80);
-                StrLCD("CORRECT PASSWORD");
+                StrLCD((u8*)"CORRECT PASSWORD");
 
                 delay_ms(500);
 
                 /* Display menu options */
                 CmdLCD(0x01);
                 CmdLCD(0x80);
-                StrLCD("TOUCH SCREEN:EN/DIS");
+                StrLCD((u8*)"TOUCH SCREEN:EN/DIS");
 
                 CmdLCD(0xC0);
-                StrLCD("DEVICE1:ON/OFF");
+                StrLCD((u8*)"DEVICE1:ON/OFF");
 
                 CmdLCD(0x94);
-                StrLCD("DEVICE2:ON/OFF");
+                StrLCD((u8*)"DEVICE2:ON/OFF");
 
                 CmdLCD(0xD4);
-                StrLCD("DEVICE3:ON/OFF");
+                StrLCD((u8*)"DEVICE3:ON/OFF");
 
                 while(1)
                 {
@@ -179,12 +180,12 @@ int main()
                             if(touchenable)
                             {
                                 CmdLCD(0x80);
-                                StrLCD("TOUCH SCREEN:EN     ");
+                                StrLCD((u8*)"TOUCH SCREEN:EN     ");
                             }
                             else
                             {
                                 CmdLCD(0x80);
-                                StrLCD("TOUCH SCREEN:DIS    ");
+                                StrLCD((u8*)"TOUCH SCREEN:DIS    ");
 
                                 /* Disable all devices */
                                 disable();
@@ -228,7 +229,7 @@ int main()
                 /* Wrong password entered */
                 CmdLCD(0x01);
                 CmdLCD(0x80);
-                StrLCD("WRONG PASSWORD");
+                StrLCD((u8*)"WRONG PASSWORD");
 
                 delay_s(1);
 

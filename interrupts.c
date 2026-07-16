@@ -2,6 +2,12 @@
 #include "types.h"
 #include "SPI.h"
 #include "define.h"
+#include "lcd.h"
+#include "kpm.h"
+#include "delay.h"
+#include "password.h"
+#include <string.h>
+#include "pinconnectblock.h"
 
 /* UART receive buffer */
 char str[25];
@@ -25,13 +31,13 @@ u8 pass2[5];
 /* EINT3 Interrupt Service Routine */
 void eint3_isr(void)__irq
 {
-    int i, ch;
+    int i,ch;
     u8 key;
 
     /* Ask user to enter current password */
     CmdLCD(0x01);
     CmdLCD(0x80);
-    StrLCD("ENTER CUR PASSWORD");
+    StrLCD((u8*)"ENTER CUR PASSWORD");
 
     CmdLCD(0xC0);
 
@@ -89,7 +95,7 @@ void eint3_isr(void)__irq
         {
             CmdLCD(0x01);
             CmdLCD(0x80);
-            StrLCD("WRONG PASS");
+            StrLCD((u8*)"WRONG PASS");
 
             delay_s(1);
             break;
@@ -98,7 +104,7 @@ void eint3_isr(void)__irq
         /* Ask for new password */
         CmdLCD(0x01);
         CmdLCD(0x80);
-        StrLCD("NEW PASSWORD");
+        StrLCD((u8*)"NEW PASSWORD");
 
         CmdLCD(0xC0);
 
@@ -144,7 +150,7 @@ void eint3_isr(void)__irq
         /* Ask for password confirmation */
         CmdLCD(0x01);
         CmdLCD(0x80);
-        StrLCD("CONFIRM PASS");
+        StrLCD((u8*)"CONFIRM PASS");
 
         CmdLCD(0xC0);
 
@@ -197,26 +203,26 @@ void eint3_isr(void)__irq
             delay_ms(5);
 
             CmdLCD(0x80);
-            StrLCD("PASSWORD");
+            StrLCD((u8*)"PASSWORD");
 
             CmdLCD(0xC0);
-            StrLCD("UPDATED");
+            StrLCD((u8*)"UPDATED");
 
             delay_s(1);
 
             /* Display main menu */
             CmdLCD(0x01);
             CmdLCD(0x80);
-            StrLCD("TOUCH SCREEN:EN/DIS");
+            StrLCD((u8*)"TOUCH SCREEN:EN/DIS");
 
             CmdLCD(0xC0);
-            StrLCD("DEVICE1:ON/OFF");
+            StrLCD((u8*)"DEVICE1:ON/OFF");
 
             CmdLCD(0x94);
-            StrLCD("DEVICE2:ON/OFF");
+            StrLCD((u8*)"DEVICE2:ON/OFF");
 
             CmdLCD(0xD4);
-            StrLCD("DEVICE3:ON/OFF");
+            StrLCD((u8*)"DEVICE3:ON/OFF");
 
             break;
         }
@@ -225,7 +231,7 @@ void eint3_isr(void)__irq
             /* Passwords do not match */
             CmdLCD(0x01);
             CmdLCD(0x80);
-            StrLCD("NOT MATCHED");
+            StrLCD((u8*)"NOT MATCHED");
 
             delay_s(1);
 

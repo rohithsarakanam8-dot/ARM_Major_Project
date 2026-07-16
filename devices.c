@@ -22,7 +22,7 @@ void device1(void)
     if(touchflag1 == 1)
     {
         CmdLCD(0xC0);
-        StrLCD("DEVICE1:ON    ");
+        StrLCD((u8*)"DEVICE1:ON    ");
 
         IOSET1 = LED1;
 
@@ -37,7 +37,7 @@ void device1(void)
     else if(touchflag1 == 2)
     {
         CmdLCD(0xC0);
-        StrLCD("DEVICE1:OFF   ");
+        StrLCD((u8*)"DEVICE1:OFF   ");
 
         IOCLR1 = LED1;
 
@@ -61,7 +61,7 @@ void device2(void)
     if(touchflag2 == 1)
     {
         CmdLCD(0x94);
-        StrLCD("DEVICE2:ON    ");
+        StrLCD((u8*)"DEVICE2:ON    ");
 
         IOSET1 = LED2;
 
@@ -76,7 +76,7 @@ void device2(void)
     else if(touchflag2 == 2)
     {
         CmdLCD(0x94);
-        StrLCD("DEVICE2:OFF    ");
+        StrLCD((u8*)"DEVICE2:OFF    ");
 
         IOCLR1 = LED2;
 
@@ -99,7 +99,7 @@ void device3(void)
         touchflag3 = 1;
 
         CmdLCD(0xD4);
-        StrLCD("DEVICE3:ON     ");
+        StrLCD((u8*)"DEVICE3:ON     ");
 
         /* Turn ON buzzer */
         IOSET0 = BUZZER;
@@ -113,7 +113,7 @@ void device3(void)
         touchflag3 = 0;
 
         CmdLCD(0xD4);
-        StrLCD("DEVICE3:OFF   ");
+        StrLCD((u8*)"DEVICE3:OFF   ");
     }
 }
 
@@ -124,7 +124,7 @@ void disable(void)
     if(touchflag1 == 1)
     {
         CmdLCD(0xC0);
-        StrLCD("DEVICE1:ON     ");
+        StrLCD((u8*)"DEVICE1:ON     ");
 
         IOSET1 = LED1;
 
@@ -136,7 +136,7 @@ void disable(void)
     else if(touchflag1 == 2)
     {
         CmdLCD(0xC0);
-        StrLCD("DEVICE1:OFF    ");
+        StrLCD((u8*)"DEVICE1:OFF    ");
 
         IOCLR1 = LED1;
 
@@ -152,7 +152,7 @@ void disable(void)
     if(touchflag2 == 1)
     {
         CmdLCD(0x94);
-        StrLCD("DEVICE2:ON    ");
+        StrLCD((u8*)"DEVICE2:ON    ");
 
         IOSET1 = LED2;
 
@@ -164,7 +164,7 @@ void disable(void)
     else if(touchflag2 == 2)
     {
         CmdLCD(0x94);
-        StrLCD("DEVICE2:OFF    ");
+        StrLCD((u8*)"DEVICE2:OFF    ");
 
         IOCLR1 = LED2;
 
@@ -180,7 +180,7 @@ void disable(void)
     if(touchflag3 == 0)
     {
         CmdLCD(0xD4);
-        StrLCD("DEVICE3:OFF    ");
+        StrLCD((u8*)"DEVICE3:OFF    ");
     }
 }
 

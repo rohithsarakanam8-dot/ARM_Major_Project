@@ -1,5 +1,5 @@
 /* Include required header files */
-#include "SPI_defines.h"
+#include "spidefines.h"
 #include <lpc21xx.h>
 #include "pinconnectblock.h"
 #include "delay.h"

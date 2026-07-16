@@ -3,6 +3,8 @@
 #include "types.h"
 #include "SPI.h"
 #include "delay.h"
+#include "lcd.h"
+#include "kpm.h"
 
 /* External password variables */
 extern u8 keyvalue;
@@ -31,7 +33,7 @@ void GetPassword(void)
     CmdLCD(0x01);
 
     CmdLCD(0x80);
-    StrLCD("ENTER PASSWORD");
+    StrLCD((u8*)"ENTER PASSWORD");
 
     CmdLCD(0xC0);
 
